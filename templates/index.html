@@ -1,0 +1,8 @@
+{% extends "base.html" %} {% block body %}
+
+<div class="topnav">
+    {% if session.logged_in %} {% else %} {% endif %}
+</div>
+<hr> {% if session['logged_in'] %}
+<h5>Welcome, {{session['username'] }}</h5>
+{% endif %} {% endblock body %}

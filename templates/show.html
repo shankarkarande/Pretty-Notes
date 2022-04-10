@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block title %}Your Notes{% endblock title %}
+{% block body %}
+<div class="container my-3">
+
+  <h5>Your Notes</h5>
+
+  {% if allTodo|length == 0 %}
+
+  <div class="alert alert-primary d-flex align-items-center" role="alert">
+    <svg class="bi flex-shrink-0 me-2" width="20" height="20" role="img" aria-label="Info:">
+      <use xlink:href="/" />
+    </svg>
+    <div>
+      <strong>Not Found !</strong>
+      Notes are not required please add !
+    </div>
+  </div>
+
+  {% else %}
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">SNo</th>
+        <th scope="col">Title</th>
+        <th scope="col">Note</th>
+        <th scope="col">Time</th>
+        <th scope="col">Modify</th>
+      </tr>
+    </thead>
+
+
+    <tbody>
+      {% for note in allTodo %}
+      <tr>
+        <th scope="row">{{loop.index}}</th>
+        <td>{{note.title}}</td>
+        <td>{{note.textarea}}</td>
+        <td>{{note.td}}</td>
+        <td style="align-items: center;">
+          <a href="/update/{{note.sno}}" type="button" class="btn btn-outline btn-sm mx-1 border border-dark"
+            style="color: black;">Update  
+            </button>
+            <a href="/delete/{{note.sno}}" type="button" class="btn btn-outline btn-sm mx-1 border border-dark"
+              style="color: black; ">Delete</button>
+
+        </td>
+      </tr>
+
+      {% endfor %}
+    </tbody>
+  </table>
+  {% endif %}
+
+</div>
+{% endblock body %}
